@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [checked, setChecked] = useState(true)
+
+const [checked1, setChecked1] = useState(false)
+const [result, setResult] = useState(false)
+
+function handleSubmit() {
+  setResult(checked1 ? 'button is checked' : 'button is NOT checked')
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type="checkbox" checked={true}/> True checked <br />
+      <input type="checkbox" checked={false}/>  False checked
+      <br />
+      <hr />
+      <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} /> status from state
+      <p>Состояние: {checked ? 'отмечен' : 'не отмечен'}</p>
+      <br />
+      <br />
+      <hr />
+      <input type="checkbox" checked={checked1} onChange={() => setChecked1(!checked1)} />
+      <button onClick={handleSubmit} >Button</button>
+      <p>{result}</p>
+
     </div>
   );
 }
